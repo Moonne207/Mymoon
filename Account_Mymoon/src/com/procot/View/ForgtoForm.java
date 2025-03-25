@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package View;
+package com.procot.View;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
@@ -124,7 +124,7 @@ public class ForgtoForm extends javax.swing.JPanel {
 
     new Thread(() -> {
         try {
-            if (!DAO.accountDAO.getInstance().forgetPassword(email)) {
+            if (!com.procot.DAO.accountDAO.getInstance().forgetPassword(email)) {
                 SwingUtilities.invokeLater(() -> {
                     txtEmail.putClientProperty("JComponent.outline", "error");
                     lblEmailError.setText("Email không tồn tại trong hệ thống!");

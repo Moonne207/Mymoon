@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO;
+package com.procot.DAO;
 
 /**
  *
  * @author anh74
  */
-import Model.roleModel;
-import Util.jdbcHelper;
+import com.procot.Model.roleModel;
+import com.procot.Util.jdbcHelper;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

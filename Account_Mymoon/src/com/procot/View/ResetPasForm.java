@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package View;
+package com.procot.View;
 
-import Model.accountModel;
+import com.procot.Model.accountModel;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
@@ -59,7 +59,7 @@ public class ResetPasForm extends javax.swing.JPanel {
         }
 
         // Gọi DAO để cập nhật mật khẩu trong database
-        if (DAO.accountDAO.getInstance().updatePassword(email, newPassword)) {
+        if (com.procot.DAO.accountDAO.getInstance().updatePassword(email, newPassword)) {
             JOptionPane.showMessageDialog(this, "Password changed successfully!");
             main.getInstance().loginView();
         } else {

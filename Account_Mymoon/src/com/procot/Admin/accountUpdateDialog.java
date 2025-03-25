@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Admin;
+package com.procot.Admin;
 
-import Admin.accountForm;
-import DAO.accountDAO;
-import DAO.roleDAO;
-import Model.accountModel;
-import Model.lecturerModel;
-import Model.roleModel;
-import Model.studentModel;
-import Util.jdbcHelper;
+import com.procot.Admin.accountForm;
+import com.procot.DAO.accountDAO;
+import com.procot.DAO.roleDAO;
+import com.procot.Model.accountModel;
+import com.procot.Model.lecturerModel;
+import com.procot.Model.roleModel;
+import com.procot.Model.studentModel;
+import com.procot.Util.jdbcHelper;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +30,6 @@ public class accountUpdateDialog extends javax.swing.JPanel {
      * Creates new form classInsertDialog
      */
     accountForm panel;
-    ArrayList<studentModel> studentList = DAO.studentDAO.getInstance().selectAll();
-    ArrayList<lecturerModel> lecturerList = DAO.lecturerDAO.getInstance().selectAll();
 
     public accountUpdateDialog(accountForm panel) {
         initComponents();

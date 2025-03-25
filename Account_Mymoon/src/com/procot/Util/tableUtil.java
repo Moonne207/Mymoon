@@ -1,4 +1,4 @@
-package Util;
+package com.procot.Util;
 
 import java.util.ArrayList;
 import java.util.function.Function;

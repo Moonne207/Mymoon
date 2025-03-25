@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Admin;
+package com.procot.Admin;
 
-import DAO.accountDAO;
-import Model.accountModel;
-import Util.tableUtil;
+import com.procot.DAO.accountDAO;
+import com.procot.Model.accountModel;
+import com.procot.Util.tableUtil;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.util.ArrayList;

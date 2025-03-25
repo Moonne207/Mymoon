@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAO;
+package com.procot.DAO;
 
-import Model.accountModel;
-import Util.jdbcHelper;
+import com.procot.Model.accountModel;
+import com.procot.Util.jdbcHelper;
 import java.sql.*;
 import java.util.ArrayList;
 import org.mindrot.jbcrypt.BCrypt;

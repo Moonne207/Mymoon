@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package View;
+package com.procot.View;
 
-import Admin.adminForm;
-import Model.accountModel;
+import com.procot.Admin.adminForm;
+import com.procot.Model.accountModel;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
@@ -66,7 +66,7 @@ public class LoginForm extends javax.swing.JPanel {
     public void login() {
     String username = txtusername.getText();
     String password = new String(txtpassword.getPassword());
-    accountModel am = DAO.accountDAO.getInstance().checkLogin(username, password);
+    accountModel am = com.procot.DAO.accountDAO.getInstance().checkLogin(username, password);
     
     if (am != null) {
         if (chkremember.isSelected()) {
