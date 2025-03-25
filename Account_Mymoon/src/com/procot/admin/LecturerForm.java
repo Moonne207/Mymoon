@@ -4,9 +4,10 @@
  */
 package com.procot.Admin;
 
+import com.procot.Util.tableUtil;
 import com.formdev.flatlaf.FlatClientProperties;
-import com.procot.Dao.LecturerDAO;
-import com.procot.Model.Lecturer;
+import com.procot.DAO.LecturerDAO;
+import com.procot.Model.LecturerModel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -21,8 +22,8 @@ import raven.modal.option.Option;
  * @author Admin
  */
 public class LecturerForm extends javax.swing.JFrame {
-    // khai báo danh sách chứa các đối tượng Lecturer
-    ArrayList<Lecturer> LecturerList;
+    // khai báo danh sách chứa các đối tượng LecturerModel
+    ArrayList<LecturerModel> LecturerList;
     /**
      * Creates new form LecturerForm
      */
@@ -35,12 +36,12 @@ public class LecturerForm extends javax.swing.JFrame {
         //Định nghĩa tên các cột trong bảng
         String[] column = new String[]{"#", "FullName", "PhoneNumber" , "Email", "Address" , "Major" , "Status"};
         //Thêm tên vào bảng
-        TableUtil.loadTableColumn(tblLecturer, column);
+        tableUtil.loadTableColumn(tblLecturer, column);
         
         //Lấy danh sách giảng viên từ database
         LecturerList = LecturerDAO.getInstance().selectAll();
         // Thêm dữ liệu vào table
-        TableUtil.loadTableData(tblLecturer, LecturerList, lr -> new Object[]{
+        tableUtil.loadTableData(tblLecturer, LecturerList, lr -> new Object[]{
             lr.getLecturerID(),
             lr.getFullName(),
             lr.getPhoneNumber(),
@@ -49,8 +50,6 @@ public class LecturerForm extends javax.swing.JFrame {
             lr.getMajorName(),
             lr.getStatus()
         });
-        //Căn lề cho dữ liệu trong bảng
-        TableUtil.alignTableCells(tblLecturer , SwingConstants.CENTER);
         //Giới hạn độ rộng cột đầu tiên : 50
         tblLecturer.getColumnModel().getColumn(0).setMaxWidth(50);
         //Sắp xếp tự động cho bảng
@@ -62,7 +61,7 @@ public class LecturerForm extends javax.swing.JFrame {
     }
     
     // Lấy thông tin giảng viên được chọn từ bảng
-    public Lecturer getSelected() {
+    public LecturerModel getSelected() {
         int index = tblLecturer.getSelectedRow(); // Lấy chỉ số dòng được chọn
         if (index == -1) { //Không có dòng nào được chọn
             return null; //Trả về null

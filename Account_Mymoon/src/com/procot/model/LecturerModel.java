@@ -8,7 +8,7 @@ package com.procot.Model;
  *
  * @author Admin
  */
-public class Lecturer {
+public class LecturerModel {
     int lecturerID;          //Mã giảng viên
     String fullName;         //Tên giảng viên
     String phoneNumber;      //Số điện thoại
@@ -19,12 +19,12 @@ public class Lecturer {
     String status;           //Trạng thái
 
     //Constructor không có tham số
-    public Lecturer() {
+    public LecturerModel() {
     }
     
     //Constructor không có majorID
     //Lấy dữ liệu từ database để hiển thị
-    public Lecturer(int lecturerID, String fullName, String phoneNumber, String email, String address, String majorName, String status) {
+    public LecturerModel(int lecturerID, String fullName, String phoneNumber, String email, String address, String majorName, String status) {
         this.lecturerID = lecturerID;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -36,7 +36,7 @@ public class Lecturer {
 
     //Constructor không có lecturerID , majorName
     //Insert
-    public Lecturer(String fullName, String phoneNumber, String email, String address, int majorID, String status) {
+    public LecturerModel(String fullName, String phoneNumber, String email, String address, int majorID, String status) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -47,7 +47,7 @@ public class Lecturer {
     
     //Constructor không có majorName
     //Update
-    public Lecturer(int lecturerID, String fullName, String phoneNumber, String email, String address, int majorID, String status) {
+    public LecturerModel(int lecturerID, String fullName, String phoneNumber, String email, String address, int majorID, String status) {
         this.lecturerID = lecturerID;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;

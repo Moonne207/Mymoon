@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Admin
  */
-public class Student {
+public class StudentModel {
     int studentID;          //Mã sinh viên
     String fullName;        //Tên sinh viên
     Date dateOfBirth;       //Ngày sinh
@@ -24,12 +24,12 @@ public class Student {
 
     
     //Constructor không tham số
-    public Student() {
+    public StudentModel() {
     }
 
     //Constructor không có ClassID
     //Lấy dữ liệu từ database để hiển thị
-    public Student(int studentID, String fullName, Date dateOfBirth, int gender, String address, String phoneNumber, String email, String className) {
+    public StudentModel(int studentID, String fullName, Date dateOfBirth, int gender, String address, String phoneNumber, String email, String className) {
         this.studentID = studentID;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
@@ -42,7 +42,7 @@ public class Student {
     
     //Constructor không có StudentID , ClassName
     //Insert
-    public Student(String fullName, Date dateOfBirth, int gender, String address, String phoneNumber, String email, int classID) {
+    public StudentModel(String fullName, Date dateOfBirth, int gender, String address, String phoneNumber, String email, int classID) {
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -54,7 +54,7 @@ public class Student {
 
     //Constructor không có className
     //Update
-    public Student(int studentID, String fullName, Date dateOfBirth, int gender, String address, String phoneNumber, String email, int classID) {
+    public StudentModel(int studentID, String fullName, Date dateOfBirth, int gender, String address, String phoneNumber, String email, int classID) {
         this.studentID = studentID;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;

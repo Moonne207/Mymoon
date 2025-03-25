@@ -4,10 +4,10 @@
  */
 package com.procot.Admin;
 
-import com.procot.dao.LecturerDAO;
-import com.procot.dao.MajorDAO;
-import com.procot.model.Lecturer;
-import com.procot.model.Major;
+import com.procot.DAO.LecturerDAO;
+import com.procot.DAO.MajorDAO;
+import com.procot.Model.LecturerModel;
+import com.procot.Model.MajorModel;
 import java.awt.Color;
 import java.util.ArrayList;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
@@ -21,7 +21,7 @@ import raven.modal.Toast;
 public class LecturerUpdateDialog extends javax.swing.JFrame {
     LecturerForm panel;
     //Lấy danh sách chuyên ngành
-    ArrayList<Major> MajorList = MajorDAO.getInstance().selectAll();
+    ArrayList<MajorModel> MajorList = MajorDAO.getInstance().selectAll();
 
     /**
      * Creates new form LecturerUpdateDialog
@@ -34,8 +34,8 @@ public class LecturerUpdateDialog extends javax.swing.JFrame {
     }
     
     //Lấy ID dựa theo tên
-    private int getIDByName(String MajorName, ArrayList<Major> list) {
-        for (Major mj : list) {
+    private int getIDByName(String MajorName, ArrayList<MajorModel> list) {
+        for (MajorModel mj : list) {
             if (mj.getMajorName().equals(MajorName)) {
                 return mj.getMajorID();
             }
@@ -45,7 +45,7 @@ public class LecturerUpdateDialog extends javax.swing.JFrame {
     
     //Tải danh sách chuyên ngành vào combobox
     public void loadComboBox() {
-        for (Major mj : MajorList) {
+        for (MajorModel mj : MajorList) {
             cboChooseMajor.addItem(mj.getMajorName());
         }
         // Tìm kiếm nhanh trong combobox bằng swingX
@@ -54,7 +54,7 @@ public class LecturerUpdateDialog extends javax.swing.JFrame {
     
     //Hiểm thị thông tin lên form
     public void displayData(){
-        Lecturer lr = panel.getSelected();
+        LecturerModel lr = panel.getSelected();
         txtFullName.setText(lr.getFullName());
         txtPhoneNumber.setText(lr.getPhoneNumber());
         txtEmail.setText(lr.getEmail());
@@ -201,8 +201,8 @@ public class LecturerUpdateDialog extends javax.swing.JFrame {
             int majorID = getIDByName(cboChooseMajor.getSelectedItem().toString(), MajorList);
             String status = txtStatus.getText();
             
-            // Sử dụng constructor để tạo Lecturer
-            Lecturer lr = new Lecturer(lecturerID, fullName, phoneNumber, email, address, majorID, status);
+            // Sử dụng constructor để tạo LecturerModel
+            LecturerModel lr = new LecturerModel(lecturerID, fullName, phoneNumber, email, address, majorID, status);
             
             // Cập nhật thông tin giảng viên
             LecturerDAO.getInstance().update(lr);

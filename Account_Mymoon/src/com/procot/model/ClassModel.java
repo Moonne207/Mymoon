@@ -8,14 +8,14 @@ package com.procot.Model;
  *
  * @author payyga
  */
-public class Class {
+public class ClassModel {
     private int classID;
     private String className;
     private int majorID;
     private int lecturerID;
 
     // Constructor cho update và hiển thị dữ liệu
-    public Class(int classID, String className, int majorID, int lecturerID) {
+    public ClassModel(int classID, String className, int majorID, int lecturerID) {
         this.classID = classID;
         this.className = className;
         this.majorID = majorID;
@@ -23,13 +23,13 @@ public class Class {
     }
 
     // Constructor cho insert
-    public Class(String className, int majorID, int lecturerID) {
+    public ClassModel(String className, int majorID, int lecturerID) {
         this.className = className;
         this.majorID = majorID;
         this.lecturerID = lecturerID;
     }
 
-    public Class() {
+    public ClassModel() {
     }
 
     public int getClassID() {

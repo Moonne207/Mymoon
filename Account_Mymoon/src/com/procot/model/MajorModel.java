@@ -8,20 +8,20 @@ package com.procot.Model;
  *
  * @author skmyg
  */
-public class Major {
+public class MajorModel {
     int majorID;
     String majorName;
     // Dùng để hiện danh sách
-    public Major(int majorID, String majorName) {
+    public MajorModel(int majorID, String majorName) {
         this.majorID = majorID;
         this.majorName = majorName;
     }
     // Dùng để thêm dự liệu mới
-    public Major(String majorName) {
+    public MajorModel(String majorName) {
         this.majorName = majorName;
     }
 
-    public Major() {
+    public MajorModel() {
     }
 
     public int getMajorID() {
