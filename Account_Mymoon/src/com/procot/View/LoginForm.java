@@ -4,7 +4,6 @@
  */
 package com.procot.View;
 
-import com.procot.Admin.adminForm;
 import com.procot.Model.accountModel;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
