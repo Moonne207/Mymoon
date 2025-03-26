@@ -4,8 +4,8 @@
  */
 package com.procot.DAO;
 
-import com.procot.model.Major;
-import com.procot.util.JDBCHelper;
+import com.procot.Model.MajorModel;
+import com.procot.Util.jdbcHelper;
 import java.util.ArrayList;
 import java.sql.*;
 
@@ -13,37 +13,37 @@ import java.sql.*;
  *
  * @author skmyg
  */
-public class MajorDAO implements InterfaceDAO<Major> {
+public class MajorDAO implements interfaceDAO<MajorModel> {
 
     public static MajorDAO getInstance() {
         return new MajorDAO();
     }
 
     @Override
-    public int insert(Major model) {
+    public int insert(MajorModel model) {
         String sql = "INSERT INTO Major(MajorName) VALUES(?)";
-        return JDBCHelper.executeUpdate(sql, model.getMajorName());
+        return jdbcHelper.executeUpdate(sql, model.getMajorName());
     }
 
     @Override
-    public int update(Major model) {
+    public int update(MajorModel model) {
         String sql = "UPDATE Major SET MajorName=? WHERE MajorID=?";
-        return JDBCHelper.executeUpdate(sql, model.getMajorName(), model.getMajorID());
+        return jdbcHelper.executeUpdate(sql, model.getMajorName(), model.getMajorID());
     }
 
     @Override
-    public int delete(Major model) {
+    public int delete(MajorModel model) {
         String sql = "DELETE FROM Major WHERE MajorID=?";
-        return JDBCHelper.executeUpdate(sql, model.getMajorID());
+        return jdbcHelper.executeUpdate(sql, model.getMajorID());
     }
 
     @Override
-    public ArrayList<Major> selectAll() {
-        ArrayList<Major> list = new ArrayList<>();
+    public ArrayList<MajorModel> selectAll() {
+        ArrayList<MajorModel> list = new ArrayList<>();
         String sql = "SELECT * FROM Major";
-        try (ResultSet rs = JDBCHelper.executeQuery(sql)) {
+        try (ResultSet rs = jdbcHelper.executeQuery(sql)) {
             while (rs.next()) {
-                list.add(new Major(
+                list.add(new MajorModel(
                         rs.getInt("MajorID"),
                         rs.getString("MajorName")
                 ));
@@ -57,7 +57,7 @@ public class MajorDAO implements InterfaceDAO<Major> {
     // Lấy Id bằng tên major
     public int getIdByName(String name) {
         String query = "SELECT MajorID FROM Major WHERE MajorName = ?";
-        try (ResultSet rs = JDBCHelper.executeQuery(query, name)) {
+        try (ResultSet rs = jdbcHelper.executeQuery(query, name)) {
             if (rs.next()) {
                 return rs.getInt("MajorID");
             }
@@ -68,12 +68,12 @@ public class MajorDAO implements InterfaceDAO<Major> {
     }
 
     // Lấy tên 
-    public Major getName(String name) {
-        Major model = null;
+    public MajorModel getName(String name) {
+        MajorModel model = null;
         String sql = "SELECT * FROM Major WHERE MajorName=?";
-        try (ResultSet rs = JDBCHelper.executeQuery(sql, name)) {
+        try (ResultSet rs = jdbcHelper.executeQuery(sql, name)) {
             while (rs.next()) {
-                return new Major(
+                return new MajorModel(
                         rs.getInt("MajorID"),
                         rs.getString("MajorName")
                 );

@@ -4,10 +4,10 @@
  */
 package com.procot.Admin;
 
-import com.procot.dao.LecturerDAO;
-import com.procot.dao.MajorDAO;
-import com.procot.model.Lecturer;
-import com.procot.model.Major;
+import com.procot.DAO.LecturerDAO;
+import com.procot.DAO.MajorDAO;
+import com.procot.Model.LecturerModel;
+import com.procot.Model.MajorModel;
 import java.awt.Color;
 import java.util.ArrayList;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
@@ -21,7 +21,7 @@ import raven.modal.Toast;
 public class LecturerInsertDialog extends javax.swing.JFrame {
     LecturerForm panel;
     //Lấy danh sách chuyên ngành
-    ArrayList<Major> MajorList = MajorDAO.getInstance().selectAll();
+    ArrayList<Object> MajorList = MajorDAO.getInstance().selectAll();
 
     /**
      * Creates new form LecturerInsertDialog
@@ -32,8 +32,8 @@ public class LecturerInsertDialog extends javax.swing.JFrame {
         loadComboBox();
     }
     //Lấy ID dựa theo tên
-    private int getIDByName(String MajorName, ArrayList<Major> list) {
-        for (Major mj : list) {
+    private int getIDByName(String MajorName, ArrayList<MajorModel> list) {
+        for (MajorModel mj : list) {
             if (mj.getMajorName().equals(MajorName)) {
                 return mj.getMajorID();
             }
@@ -43,7 +43,7 @@ public class LecturerInsertDialog extends javax.swing.JFrame {
     
     //Tải danh sách chuyên ngành vào combobox
     public void loadComboBox() {
-        for (Major mj : MajorList) {
+        for (MajorModel mj : MajorList) {
             cboChooseMajor.addItem(mj.getMajorName());
         }
         // Tìm kiếm nhanh trong combobox bằng swingX
@@ -188,7 +188,7 @@ public class LecturerInsertDialog extends javax.swing.JFrame {
             String status = txtStatus.getText();
             
             //Tạo đối tượng Lecturer mới
-            Lecturer lr = new Lecturer(fullName, phoneNumber , email , address , majorID , status);
+            LecturerModel lr = new LecturerModel(fullName, phoneNumber , email , address , majorID , status);
             
             //Thêm giảng viên mới
             LecturerDAO.getInstance().insert(lr);
