@@ -100,19 +100,16 @@ public class tuitionFeesInsertDialog extends javax.swing.JPanel{
             txtAmount.putClientProperty("JComponent.outline", "null");
             lblErrorAmount.setText("");
         }
-////        if (!isValidEmail(txtEmail.getText())) {
-////            return false;
-////        }
-//        if(txtUsername.getText().isEmpty()){
-//            txtUsername.putClientProperty("JComponent.outline", "warning");
-//            lblErrorUsername.setForeground(Color.orange);
-//            lblErrorUsername.setText("Please enter username");
-//            return false;
-//        }
-//        else {
-//            txtUsername.putClientProperty("JComponent.outline", "null");
-//            lblErrorUsername.setText("");
-//        }
+        if(txtDueDate.getText().isEmpty()){
+            txtDueDate.putClientProperty("JComponent.outline", "warning");
+            lblErrorDueDate.setForeground(Color.orange);
+            lblErrorDueDate.setText("Please enter username");
+            return false;
+        }
+        else {
+            txtDueDate.putClientProperty("JComponent.outline", "null");
+            lblErrorDueDate.setText("");
+        }
 //        if(txtPassword.getText().isEmpty()){
 //            txtPassword.putClientProperty("JComponent.outline", "warning");
 //            lblErrorPassword.setForeground(Color.orange);
@@ -176,9 +173,9 @@ public class tuitionFeesInsertDialog extends javax.swing.JPanel{
     panel.loadTableAll();
     Toast.show(panel, Toast.Type.SUCCESS, "Add tuition successfully!");
     ModalDialog.closeModal("tuitionFeesInsert");
-        }
+        
     }
-
+    }
 
 
 
@@ -241,10 +238,10 @@ public class tuitionFeesInsertDialog extends javax.swing.JPanel{
         jLabel2.setText("Status");
 
         cbofulllname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cbofulllname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cbofulllname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select student" }));
 
         cbosemester.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cbosemester.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cbosemester.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select semester" }));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Semester Name");
