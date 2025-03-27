@@ -4,10 +4,9 @@
  */
 package com.procot.View;
 
-import com.procot.View.accountForm;
-import com.procot.DAO.accountDAO;
-import com.procot.DAO.roleDAO;
-import com.procot.Model.accountModel;
+import com.procot.View.tuitionFeesForm;
+import com.procot.DAO.tuitionFeesDAO;
+import com.procot.Model.tuitionFeesModel;
 import com.procot.Model.roleModel;
 import com.procot.Util.jdbcHelper;
 import java.awt.Color;
@@ -27,10 +26,10 @@ public class tuitionFeesUpdateDialog extends javax.swing.JPanel {
     /**
      * Creates new form classInsertDialog
      */
-    accountForm panel;
+    tuitionFeesForm panel;
 
 
-    public tuitionFeesUpdateDialog(accountForm panel) {
+    public tuitionFeesUpdateDialog(tuitionFeesForm panel) {
         initComponents();
         this.panel = panel;
         displayData();
@@ -38,7 +37,7 @@ public class tuitionFeesUpdateDialog extends javax.swing.JPanel {
 
     // Phương thức lấy dự liệu từ table và hiện lên textfield
     public void displayData() {
-        accountModel am = panel.getSelected();
+        tuitionFeesModel am = panel.getSelected();
         txtAccountName.setText(am.getAccountName());
         txtEmail.setText(am.getEmail());
         List<roleModel> roleList = roleDAO.getInstance().getAllRoless();

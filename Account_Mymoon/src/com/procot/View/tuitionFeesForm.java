@@ -4,11 +4,11 @@
  */
 package com.procot.View;
 
-import com.procot.DAO.TuitionFeesDAO;
+import com.procot.DAO.tuitionFeesDAO;
 import com.procot.Util.tableUtil;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
-import com.procot.Model.TuitionFeesModel;
+import com.procot.Model.tuitionFeesModel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import raven.modal.ModalDialog;
@@ -26,7 +26,7 @@ public class tuitionFeesForm extends javax.swing.JPanel {
     /**
      * Creates new form classForm
      */
-    ArrayList<TuitionFeesModel> tuitionList;
+    ArrayList<tuitionFeesModel> tuitionList;
 
     public tuitionFeesForm() {
         initComponents();
@@ -36,12 +36,12 @@ public class tuitionFeesForm extends javax.swing.JPanel {
     // Phương thức in tất cả những thứ cần thiết lên table
     public void loadTableAll() {
     // Định nghĩa tên cột cho bảng
-    String[] column = new String[]{"TuitionID", "StudentID", "Amount", "Payment Due Date", "Status"};
+    String[] column = new String[]{"FullName","SemesterName", "Amount", "Payment Due Date", "Status"};
     tableUtil.loadTableColumn(tblTuitionFees, column); // Cấu hình tên cột cho JTable
-    tuitionList = TuitionFeesDAO.getInstance().selectAll();
+    tuitionList = tuitionFeesDAO.getInstance().selectAll();
     tableUtil.loadTableData(tblTuitionFees, tuitionList, tf -> new Object[]{
-        tf.getFeeId(),
-        tf.getStudentId(),
+        tf.getFullName(),
+        tf.getSemesterName(),
         tf.getAmount(),
         tf.getDueDate(),
         tf.isPaymentStatus() ? "Đã thanh toán" : "Chưa thanh toán",
@@ -58,7 +58,7 @@ public class tuitionFeesForm extends javax.swing.JPanel {
     }
 
     // Phương thức lấy dự liệu được chọn từ table
-    public TuitionFeesModel getSelected() {
+    public tuitionFeesModel getSelected() {
         int index = tblTuitionFees.getSelectedRow(); // Lấy dòng được chọn
         if (index == -1) {
             return null;
@@ -73,26 +73,23 @@ public class tuitionFeesForm extends javax.swing.JPanel {
         String keyword = txtSearch.getText().toLowerCase();
         switch (select) {
             case "Tất cả":
-                tuitionList = TuitionFeesDAO.getInstance().searchAll(keyword);
+                tuitionList = tuitionFeesDAO.getInstance().searchAll(keyword);
                 break;
             case "#":
-                tuitionList = TuitionFeesDAO.getInstance().search("TuitionID", keyword);
+                tuitionList = tuitionFeesDAO.getInstance().search("TuitionID", keyword);
                 break;
-            case "StudentID":
-                tuitionList = TuitionFeesDAO.getInstance().search("StudentID", keyword);
+            case "FullName":
+                tuitionList = tuitionFeesDAO.getInstance().search("FullName", keyword);
                 break;
             case "Due Date":
-                tuitionList = TuitionFeesDAO.getInstance().search("Due Date", keyword);
+                tuitionList = tuitionFeesDAO.getInstance().search("Due Date", keyword);
                 break;
             case "":
-                tuitionList = TuitionFeesDAO.getInstance().search("Due Date", keyword);
+                tuitionList = tuitionFeesDAO.getInstance().search("Due Date", keyword);
                 break;
         }
 
         tableUtil.loadTableData(tblTuitionFees, tuitionList, am -> new Object[]{
-            am.getFeeId(),
-            am.getStudentId(),
-            am.getDueDate(),
         });
     }
 
@@ -131,7 +128,7 @@ public class tuitionFeesForm extends javax.swing.JPanel {
             // Tạo ModalDialog và hiện thị nó lên
             // ModalDialog.showModal([Lớp cha], new SimpleModalBorder([Panel muốn hiện thị],[Tên tiêu đề]),[Cài đặt],[ID của ModalDialog]);
             String nameTitle = "<html><h2>Edit user information</h2></html>";
-            ModalDialog.showModal(this, new SimpleModalBorder(new accountUpdateDialog(this), nameTitle), option, "accountUpdate");
+            ModalDialog.showModal(this, new SimpleModalBorder(new tuitionFeesUpdateDialog(this), nameTitle), option, "TuitionFeesUpdate");
         }
     }
 
@@ -150,13 +147,13 @@ public class tuitionFeesForm extends javax.swing.JPanel {
 
     if (output == JOptionPane.YES_OPTION) {
         try {
-            TuitionFeesModel selectedTuition = getSelectedTuition(); // Lấy model của tài khoản
+            tuitionFeesModel selectedTuition = getSelectedTuition(); // Lấy model của tài khoản
             if (selectedTuition == null) {
                 Toast.show(this, Toast.Type.ERROR, "No account found to delete!");
                 return;
             }
 
-            int result = TuitionFeesDAO.getInstance().delete(selectedTuition);
+            int result = tuitionFeesDAO.getInstance().delete(selectedTuition);
             if (result > 0) {
                 loadTableAll();
                 Toast.show(this, Toast.Type.SUCCESS, "Delete successful");
@@ -169,17 +166,33 @@ public class tuitionFeesForm extends javax.swing.JPanel {
         }
     }
 }
-        private TuitionFeesModel getSelectedTuition() {
+    private tuitionFeesModel getSelectedTuition() {
     int selectedRow = tblTuitionFees.getSelectedRow();
     if (selectedRow == -1) {
         return null;
     }
-    
-    int feeId = tblTuitionFees.getValueAt(selectedRow, 1).toint(); // Giả sử cột 1 là Username
-    TuitionFeesModel model = new TuitionFeesModel();
-    model.setFeeId(feeId);
+
+    Object value = tblTuitionFees.getValueAt(selectedRow, 1); // Lấy dữ liệu từ cột 1
+    int feeId;
+
+    // Kiểm tra kiểu dữ liệu của value trước khi ép kiểu
+    if (value instanceof Integer) {
+        feeId = (Integer) value;
+    } else {
+        try {
+            feeId = Integer.parseInt(value.toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return null; // Trả về null nếu có lỗi chuyển đổi
+        }
+    }
+
+    tuitionFeesModel model = new tuitionFeesModel();
+    model.setFeeID(feeId);
     return model;
 }
+
+
 
         
       

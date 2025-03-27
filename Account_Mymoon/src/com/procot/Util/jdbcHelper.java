@@ -5,7 +5,7 @@ import java.sql.*;
 public class jdbcHelper {
 
     private static final String host = "localhost";          // Địa chỉ CSDL
-    private static final String database = "StudentManagementv5";        // Tên Database
+    private static final String database = "StudentManagement";        // Tên Database
     private static final String user = "sa";                    // Tên tài khoản SQL Server
     private static final String password = "123456789";    // Mật khẩu SQL Server
     private static final String url = "jdbc:sqlserver://" + host + ";databaseName=" + database + ";trustServerCertificate=true";

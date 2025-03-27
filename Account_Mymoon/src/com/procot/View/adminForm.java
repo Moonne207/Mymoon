@@ -33,7 +33,8 @@ public class adminForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         instance = this;
         menuView(accountName);
-        accountView();
+        //accountView();
+        tuiitionfeesView();
     }
 
     
@@ -51,12 +52,19 @@ public class adminForm extends javax.swing.JFrame {
 
 
     }
-    public void accountView(){
-        accountForm panel = new accountForm();
+//    public void accountView(){
+//        accountForm panel = new accountForm();
+//        pnlShow.removeAll();
+//        pnlShow.add(panel).setVisible(true);
+//        pnlShow.revalidate();
+//    }
+    public void tuiitionfeesView(){
+        tuitionFeesForm panel = new tuitionFeesForm();
         pnlShow.removeAll();
         pnlShow.add(panel).setVisible(true);
         pnlShow.revalidate();
     }
+    
     public void logoutView(){
         main main = new main();
         main.setVisible(true);
